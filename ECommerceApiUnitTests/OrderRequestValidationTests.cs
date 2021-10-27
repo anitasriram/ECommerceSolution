@@ -19,7 +19,7 @@ namespace ECommerceApiUnitTests
         {
             var maxLengthOnName = Helpers.GetPropertyAttributeValue<OrderPostRequest, string, MaxLengthAttribute, int>(p => p.Name, attr => attr.Length);
 
-            Assert.Equal(120, maxLengthOnName);
+            Assert.Equal(100, maxLengthOnName);
             Assert.True(Helpers.HasAttribute<OrderPostRequest, RequiredAttribute>(c => c.Name));
             Assert.True(Helpers.HasAttribute<Creditcardinfo, CreditCardLuhnCheckAttribute>(c => c.Number));
         }
