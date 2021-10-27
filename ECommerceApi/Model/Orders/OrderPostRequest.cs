@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerceApi.CustomValidators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace ECommerceApi.Models.Orders
     public class Creditcardinfo
     {
         [Required]
+        [CreditCardLuhnCheck]
         public string Number { get; set; }
         [Required]
         public string Expiration { get; set; }

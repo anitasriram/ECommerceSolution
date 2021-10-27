@@ -1,4 +1,5 @@
 ﻿using ECommerceApi.Filters;
+using ECommerceApi.Models.Orders;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace ECommerceApi.Controllers
     {
         [HttpPost("/orders")]
         [ValidateModel]
-        public async Task<ActionResult> PlaceOrder()
+        public async Task<ActionResult> PlaceOrder([FromBody] OrderPostRequest orderPostRequest)
         {
            return StatusCode(201, new { });
         }

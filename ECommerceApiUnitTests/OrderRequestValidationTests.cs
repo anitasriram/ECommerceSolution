@@ -1,7 +1,10 @@
 using ECommerceApi.Controllers;
+using ECommerceApi.CustomValidators;
 using ECommerceApi.Filters;
+using ECommerceApi.Models.Orders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +14,14 @@ namespace ECommerceApiUnitTests
 {
     public class OrderRequestValidationTests
     {
-        [Fact(Skip = "Do this later")]
+        [Fact]
         public void OrderRequestHasTheCorrectValidationAttributes()
         {
-            // TODO: Learn some C# Reflection!
+            var maxLengthOnName = Helpers.GetPropertyAttributeValue<OrderPostRequest, string, MaxLengthAttribute, int>(p => p.Name, attr => attr.Length);
+
+            Assert.Equal(100, maxLengthOnName);
+            Assert.True(Helpers.HasAttribute<OrderPostRequest, RequiredAttribute>(c => c.Name));
+            Assert.True(Helpers.HasAttribute<Creditcardinfo, CreditCardLuhnCheckAttribute>(c => c.Number));
         }
 
         [Fact]
