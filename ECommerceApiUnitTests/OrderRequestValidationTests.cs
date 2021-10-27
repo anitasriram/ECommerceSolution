@@ -17,7 +17,7 @@ namespace ECommerceApiUnitTests
         [Fact]
         public void OrderRequestHasTheCorrectValidationAttributes()
         {
-            var maxLengthOnName = Helpers.GetPropertyAttributeValue<OrderPostRequest, string, MaxLengthAttribute, int>(p => p.Name, attr => attr.Length);
+            var maxLengthOnName = Helpers.Get PropertyAttributeValue<OrderPostRequest, string, MaxLengthAttribute, int>(p => p.Name, attr => attr.Length);
 
             Assert.Equal(100, maxLengthOnName);
             Assert.True(Helpers.HasAttribute<OrderPostRequest, RequiredAttribute>(c => c.Name));
